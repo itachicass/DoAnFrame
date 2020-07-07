@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "LichSuMuaHang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<FashionShop.Models.EF.hoadon> list = ViewData["listhd"] as List<FashionShop.Models.EF.hoadon>;
+    int stt = 1;
+}
+
+
+<section>
+    <h3>Lịch sử mua hàng</h3>
+    <img class="pageBanner" src="~/themes/images/carousel/banner1.png" alt="New products">
+    @if (list == null)
+    {
+        <p>Không có lịch sử mua hàng nào.</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Ngày mua</th>
+                    <th>Tổng trị giá</th>
+                    <th>Tình trạng</th>
+                    <th>Ghi chú</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var hd in list)
+                {
+                    <tr>
+                        <td>@stt</td>
+                        <td>@hd.NGHD</td>
+                        <td>@hd.TRIGIA</td>
+                        <td>@hd.TINHTRANG</td>
+                        <td>@hd.GHICHU</td>
+                        <td><a href="/Home/ChiTietDH?sohd=@hd.SOHD">Chi tiết</a></td>
+                    </tr>
+                    stt++;
+                }
+            </tbody>
+        </table>
+    }
+</section>
+

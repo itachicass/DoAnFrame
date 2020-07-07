@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ThanhToan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    FashionShop.Models.EF.khachhang kh = ViewData["CustomInfor"] as FashionShop.Models.EF.khachhang;
+    string thongbao = ViewData["thongbao"] as string;
+}
+
+<section class="header_text sub">
+    <img class="pageBanner" src="themes/images/pageBanner.png" alt="New products">
+    <h4><span>Thanh toán</span></h4>
+    <div>
+        @if (thongbao != null && thongbao.Equals("ok"))
+        {
+        <div class="alert-success">Thanh toan thanh cong</div>
+        }else if (thongbao != null && thongbao.Equals("error")){ 
+            <div class="alert-danger">Thanh toan khong thanh cong</div>
+        }
+    </div>
+</section>
+<section>
+    @if (kh.HOTEN != null)
+    {
+    <form action="/Cart/ThanhToan" method="post" align="center">
+        Tên người nhận: <input type="text" name="ten" value="@kh.HOTEN" />
+        <br />
+        Ngày sinh: <input type="datetime" name="nsinh" value="@kh.NGSINH" />
+        <br />
+        Giới tính:  <input type="text" name="gioitinh" value="@kh.GIOITINH" />
+        <br />
+        Số điện thoại:  <input type="text" name="sdt" value="@kh.SODT" />
+        <br />
+        Địa chỉ:  <input type="text" name="diachi" value="@kh.DCHI" />
+        <br />
+        Phương thức thanh toán: thanh toán khi nhận hàng
+        <br />
+        <input type="submit" name="dathang" value="Đặt hàng" />
+    </form>
+    }
+    else
+    {
+    <form action="/Cart/ThanhToan" method="post" align="center">
+        Tên người nhận: <input type="text" name="ten" value="" />
+        <br />
+        Ngày sinh: <input type="text" name="nsinh" value="" />
+        <br />
+        Giới tính:  <input type="text" name="gioitinh" value="" />
+        <br />
+        Số điện thoại:  <input type="text" name="sdt" value="" />
+        <br />
+        Địa chỉ:  <input type="text" name="diachi" value="" />
+        <br />
+        Phương thức thanh toán: thanh toán khi nhận hàng
+        <br />
+        <input type="submit" name="dathang" value="Đặt hàng" />
+    </form>
+    }
+
+</section>
+

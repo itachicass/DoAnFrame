@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    FashionShop.Models.EF.khachhang kh = ViewData["kh"] as FashionShop.Models.EF.khachhang;
+}
+
+<section>
+<img class="pageBanner" src="~/themes/images/carousel/banner1.png" alt="New products">
+<h2>Thông tin khách hàng</h2>
+@if(Session["dangnhap"] == null || string.IsNullOrEmpty(Session["dangnhap"].ToString()))
+{
+<p>Bạn chưa đăng nhập!</p>
+}
+else
+{
+<form action="/Home/CapnhatthongtinKH" , method="put">
+    Tên:<p>@kh.HOTEN</p>">
+
+    Giới tính:<p>@kh.GIOITINH</p>
+
+    Ngày sinh:<p>@kh.NGSINH</p>
+
+    Số điện thoại:
+    <input type="text" name="phone" value="@kh.SODT">
+    Địa chỉ:
+    <input type="text" name="address" value="@kh.DCHI">
+    <input type="submit" name="submit" value="Lưu" />
+</form>
+}
+</section>
+
+

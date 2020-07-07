@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ChiTietDH";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<FashionShop.Models.EF.cthd> list = ViewData["listcthd"] as List<FashionShop.Models.EF.cthd>;
+    int stt = 1;
+}
+
+<section>
+    <img class="pageBanner" src="~/themes/images/carousel/banner1.png" alt="New products">
+      <address>
+            One Microsoft Way<br />
+            Redmond, WA 98052-6399<br />
+            <abbr title="Phone">P:</abbr>
+            425.555.0100
+        </address>
+
+    <address>
+        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+    </address>
+
+    <h3>Chi tiết hóa đơn</h3>
+    @if (list == null)
+    {
+        <p>Không có chi tiết đơn hàng nào phù hợp</p>
+    }
+    else
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Hình ảnh</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Đơn giá</th>
+                    <th>Số lượng</th>
+                    <th>Thành tiền</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cthd in list)
+                {
+                    <tr>
+                        <td>@stt</td>
+                        <td><a href="/Product/Product_Detail/@cthd.MASP"><img src="~/themes/images/Image/@cthd.HINHANH" width="150" height="150" /></a></td>
+                        <td>@cthd.sanpham.TENSP</td>
+                        <td>@cthd.sanpham.GIA</td>
+                        <td>@cthd.SL</td>
+                        <td>@cthd.THANHTIEN</td>
+                    </tr>
+                    stt++;
+                }
+            </tbody>
+        </table>
+    }
+
+</section>
+

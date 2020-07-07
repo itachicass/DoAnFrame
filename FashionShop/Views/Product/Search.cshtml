@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<FashionShop.Models.EF.sanpham> listsp = ViewData["listProduct"] as List<FashionShop.Models.EF.sanpham>;
+
+}
+<img class="pageBanner" src="~/themes/images/carousel/banner1.png" alt="New products">
+<section class="main-content">
+   <div class="row">
+        <div class="span12">
+            <ul class="thumbnails listing-products" id=" productspace">
+                @foreach (var sp in listsp)
+                {
+                    <li class="span3">
+                        <div class="product-box">
+                            <span class="sale_tag"></span>
+                            <a href="/Product/Product_Detail/@sp.MASP"><img alt="ảnh" src="~/themes/images/Image/@sp.HINHANH"></a><br />
+                            <a href="/Product/Product_Detail/@sp.MASP" class="title">@sp.TENSP</a><br />
+                            <a href="#" class="category">@sp.LOAISP</a>
+                            <p class="price">@sp.GIA</p>
+                        </div>
+                    </li>
+                }
+            </ul>
+            
+        </div>
+    </div>
+</section>
+
+
+

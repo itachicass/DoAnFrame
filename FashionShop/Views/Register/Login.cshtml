@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string a = ViewData["thongbao"] as string;
+}
+<section class="header_text sub">
+    <img class="pageBanner" src="~/themes/images/carousel/banner1.png" alt="New products">
+    <h4><span>Login</span></h4>
+</section>
+<section class="main-content">
+    <div class="row">
+        <div class=" span3"></div>
+        <div class="span6">
+
+            <h4 class="title"><span class="text"><strong>Đăng nhập</strong> Form</span></h4>
+            @if (a != null && a.Equals("error"))
+            {
+                <div class="alert-danger"><h4>Sai tài khoản hoặc mật khẩu</h4></div>
+            }
+            <form action="/Register/Login" method="post" class="form-stacked">
+                <fieldset>
+                    @*@if(a != null && )
+                {
+                    <p>@a</p>
+                <div id="console" class="clearfix">
+                    <div class="alert alert-block alert-error">
+
+
+                        <ul>
+                            <li>Sai tài khoản hoặc mật khẩu</li>
+
+                        </ul>
+                    </div>
+                </div>
+                }*@
+
+                    <div class="control-group">
+                        <label class="control-label">Tên đăng nhập</label>
+                        <div class="controls">
+                            <input type="text" placeholder="Nhập tên đăng nhập" class="input-xlarge" name="username">
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label">Mật khẩu:</label>
+                        <div class="controls">
+                            <input type="password" placeholder="Nhập mật khẩu" class="input-xlarge" name="password">
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="actions"><input tabindex="9" class="btn btn-inverse large" type="submit" value="Đăng nhập"></div>
+                </fieldset>
+            </form>
+        </div>
+        <div class=" span3"></div>
+    </div>
+</section>

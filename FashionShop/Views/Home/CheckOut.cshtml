@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<FashionShop.Models.EF.cthd> listorder = ViewData["listorder"] as List<FashionShop.Models.EF.cthd>;
+    FashionShop.Models.EF.hoadon hoadon = ViewData["hoadon"] as FashionShop.Models.EF.hoadon;
+}
+
+<section class="header_text sub">
+    <img class="pageBanner" src="~/themes/images/carousel/banner1.png" alt="New products">
+    <h4>Đơn hàng của bạn</h4>
+</section>
+
+
+<p>Ngày hóa đơn: @hoadon.NGHD</p>
+
+<p>Tình trạng: @hoadon.TINHTRANG</p>
+
+@if (hoadon.THANHTOAN == 0)
+{
+<p>Thanh toán: </p><p style="color:red;">Chưa thanh toán</p>
+}
+else
+{
+    <p>Thanh toán: </p> <p>Đã thanh toán</p>
+}
+<strong>Chi tiết đơn hàng</strong>
+<table border="2">
+    <tr>
+        <td>Mã sản phẩm </td>
+        <td>Hình ảnh</td>
+        <td>Số lượng</td>
+        <td>Thành tiền</td>
+    </tr>
+    @foreach (var cthd in listorder)
+    {
+    <tr>
+        <td>cthd.MASP</td>
+        <td>cthd.HINHANH</td>
+        <td>cthd.SL</td>
+        <td>cthd.THANHTIEN</td>
+    </tr>
+    }
+</table>
+<p>Trị giá hóa đơn: @hoadon.TRIGIA</p>
